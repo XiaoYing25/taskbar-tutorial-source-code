@@ -1,0 +1,95 @@
+body{
+    background-color: #6d747c;
+    font-family: "Fragment Mono", monospace;
+    font-style: normal;
+}
+
+.taskbar{
+    width: 90vw;
+    max-width: 600px;
+    min-width: 100px;
+    /*Position for the taskbar*/
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    /*the style of it*/
+    background-color: rgba(255, 255, 255, 0.6) ;
+    border: rgba(245, 245, 245, 0.6) solid 1px;
+    box-shadow: 2px 2px 40px 5px rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    /*flexbox setting*/
+    display: flex;/*Helps to center the icon nicely in the taskbar*/
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    gap: 30px;
+    /*size*/
+    width: 600px;
+    height: 100px;
+    z-index: 999;
+}
+
+
+img{
+    border-radius: 25px; /*border radius*/
+}
+
+.icon{
+    /*sets it into a flex, if it a row it will take up space, column doesnt*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    margin: 0;
+    position: relative; /*doesnt take up space*/
+
+    transition: margin 900ms ease 0s;
+}
+
+.icon:hover{
+    margin-bottom: 45px; /*when hover, it will float up*/
+}
+
+.icon .tooltip{
+    position: absolute;
+    white-space: nowrap; /*Text will never wrap to the next line*/
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px; /* for the box size*/
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);/*rgba(redValue, greenValue, blueValue, alphaValue = opacity)*/
+    box-shadow: 2px 2px 40px 5px rgba(255, 255, 255, 0.3); /*horizontal, vertical, blur, spread radius of the shadow, color*/
+    opacity: 0;/*at first it is gonna be transparent*/
+    /*fade animation*/
+    transition: opacity 200ms ease 0s; /*property, duration of it, type of animation, duration of delay*/
+}
+
+.icon:hover .tooltip{
+    opacity: 1; /*appears when hovered*/
+}
+
+/* the indicated that shows it is being hovered*/
+.icon .circle{
+    position: absolute;/*overlap elements*/
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 90px;
+    padding: 5px;
+    width: 1px;
+    left: 20;
+    right: 30;
+    top: 600;
+    bottom: 0;
+    opacity: 0;
+    margin: -10px;
+    transition: opacity 200ms ease 0s;
+}
+
+.icon:hover .circle{
+    opacity: 1;
+}
+
